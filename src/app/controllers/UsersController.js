@@ -10,9 +10,9 @@ class UsersController {
       return response.status(400).json({ error: 'User already exists.' });
     }
 
-    const user = await User.create(request.body);
+    const { id, name, email, provider } = await User.create(request.body);
 
-    return response.json(user);
+    return response.json({ id, name, email, provider });
   }
 }
 
