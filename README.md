@@ -44,28 +44,17 @@ _In the next few weeks, I plan to include Docker directly in the repository with
 
 To run this server you will need three containers running on your machine.
 
-To do so, you will need to run the following commands:
-
-- `docker run --name redisbarber -p 6379:6379 -d -t redis:alpine`;
-- `docker run --name mongobarber -p 27017:27017 -d -t mongo`;
-- `docker run --name some-postgres -e POSTGRES_PASSWORD=docker -p 5433:5432 -d postgres`;
-
 _Remember: If you restart your machine, you will need to start again the server with `docker start <container_id>`._
 
 ## Getting started
 
-_Consider checking out the FrontEnd [repository](https://github.com/jpedroschmitz/gobarber)!_
+_Consider checking out the FrontEnd [repository](https://github.com/higormeloap89/gobarber-api)!_
 
-1. Clone this repo using `https://github.com/jpedroschmitz/gobarber-api.git`
+1. Clone this repo using `https://github.com/higormeloap89/gobarber-api.git`
 2. Move to the appropriate directory: `cd gobarber-api`.<br />
 3. Run `yarn` to install dependencies.<br />
-4. Copy the `.env.example` file and rename it to `.env`.<br/>
-5. Add all the values for the environment variables.<br/>
-6. Run `yarn start` and `yarn queue` to run the servers at `http://localhost:3000`.
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
+4. Add all the values for the environment variables.<br/>
+5. Run `yarn start` and `yarn queue` to run the servers at `http://localhost:3333`.
 
 ## License
 
