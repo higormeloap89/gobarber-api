@@ -34,8 +34,8 @@ A Node.js API built with Express and all the latest tools and best practices in 
 
 ## Dependencies
 
-- [Node.js](https://nodejs.org/en/) 8.0.0 ou >
-- [Yarn](https://yarnpkg.com/pt-BR/docs/install)
+- [Node.js](https://nodejs.org/en/) 10.16.3
+- [Yarn](https://yarnpkg.com/pt-BR/docs/install) 1.19.1
 - [Docker](https://www.docker.com/)
 
 ## Prerequisites
