@@ -2,10 +2,11 @@ import jwt from 'jsonwebtoken';
 import * as Yup from 'yup';
 /* Models */
 import User from '../models/User';
+import File from '../models/File';
 /* Config */
 import authConfig from '../../config/auth';
 
-class SessionsController {
+class SessionController {
   async store(request, response) {
     const schema = Yup.object().shape({
       email: Yup.string()
@@ -20,7 +21,16 @@ class SessionsController {
 
     const { email, password } = request.body;
 
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({
+      where: { email },
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
 
     if (!user) {
       return response.status(401).json({ error: 'User not found!' });
@@ -30,10 +40,10 @@ class SessionsController {
       return response.status(401).json({ error: 'Password does not match' });
     }
 
-    const { id, name } = user;
+    const { id, name, provider, avatar } = user;
 
     return response.json({
-      User: { id, name, email },
+      User: { id, name, email, provider, avatar },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
       }),
@@ -41,4 +51,4 @@ class SessionsController {
   }
 }
 
-export default new SessionsController();
+export default new SessionController();
